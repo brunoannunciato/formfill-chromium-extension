@@ -1,0 +1,7 @@
+{
+	"name": "Formfill",
+	"description": "Fill forms with saved data!",
+	"version": "0.1.0",
+	"manifest_version": 3,
+	"options_page": "src/options/index.html"
+}
