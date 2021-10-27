@@ -1,0 +1,54 @@
+html,
+body {
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+}
+
+/* COMPONENTS */
+
+.container {
+    display: block;
+    margin: 0 auto;
+    width: 90%;
+}
+
+.hide {
+    display: none !important;
+}
+
+/* HEADER */
+
+.header {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.header__label {
+    font-size: 16px;
+    margin-right: 6px;
+}
+
+.header__menu,
+.header__profiles,
+.header__add-profile {
+    align-items: center;
+    display: flex;
+}
+
+.header__icon {
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    height: 18px;
+    padding: 0;
+    width: 18px;
+    margin-left: 6px;
+}
+
+.header__icon img{
+    width: 100%;
+}
