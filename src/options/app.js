@@ -8,16 +8,19 @@ const profileSelect = document.querySelector('#profile')
 const profileNameField = document.querySelector('#profile-name')
 let profileList
 
-const getProfiles = () => {
-	chrome.storage.sync.get(['profiles'], (profiles) => {
-		profileList = profiles
+const getProfiles = async () => {
+	const profileList = new Promise((resolve) => {
+		chrome.storage.sync.get(['profiles'], (response) => {
+			resolve(response.profiles)
+		})
 	})
 
-	return profileList || []
+	return profileList
 }
 
 
-const renderProfileList = (profiles) => {
+const renderProfileList = async () => {
+	const profiles = await getProfiles()
 	const profileNames = Object.keys(profiles)
 	profileSelect.innerHTML = ''
 	
@@ -27,9 +30,9 @@ const renderProfileList = (profiles) => {
 	})
 }
 
-const addProfile = () => {
-	const currentProfiles = getProfiles()
-	const newProfiles = {...currentProfiles?.profiles, [profileNameField.value]: {}}
+const addProfile = async () => {
+	const currentProfiles = await getProfiles()
+	const newProfiles = {...currentProfiles, [profileNameField.value]: {}}
 
 	chrome.storage.sync.set({profiles: newProfiles})
 	profileNameField.value = ''
@@ -41,14 +44,18 @@ addProfileButton.addEventListener('click', () => {
 	addProfileSection.classList.remove('hide')
 })
 
-saveNewProfileButton.addEventListener('click', () => {
+saveNewProfileButton.addEventListener('click', async () => {
 	addProfileSection.classList.add('hide')
 	chooseProfileSection.classList.remove('hide')
-	addProfile()
+	await addProfile()
 
-	chrome.storage.onChanged.addListener((changes) => {
+	chrome.storage.onChanged.addListener(async (changes) => {
 		const newValues = {...changes.profiles.oldValue, ...changes.profiles.newValue}
 
-		renderProfileList(newValues)
+		await renderProfileList(newValues)
 	})
+})
+
+window.addEventListener('DOMContentLoaded', () => {
+	renderProfileList()
 })
