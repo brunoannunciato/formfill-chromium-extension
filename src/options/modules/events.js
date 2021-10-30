@@ -1,6 +1,17 @@
 import elements from './elements.js'
-import { setTitle, addFieldRow, renderProfileList } from './view.js'
-import { setProfile, getActivedProfile, addProfile } from './utils.js'
+import {
+	setTitle,
+	addFieldRow,
+	renderProfileList,
+	showChooseProfile
+} from './view.js'
+
+import {
+	setProfile,
+	getActivedProfile,
+	addProfile,
+	saveProfile
+} from './utils.js'
 
 const {
 	addProfileButton,
@@ -8,14 +19,14 @@ const {
 	chooseProfileSection,
 	addProfileSection,
 	profileSelect,
-	addFieldRowButton
+	addFieldRowButton,
+	saveButton
 } = elements
 
 export default () => {
-	addProfileButton.addEventListener('click', () => {
-		chooseProfileSection.classList.add('hide')
-		addProfileSection.classList.remove('hide')
-	})
+	addProfileButton.addEventListener('click', showChooseProfile)
+	addFieldRowButton.addEventListener('click', addFieldRow)
+	saveButton.addEventListener('click', saveProfile)
 	
 	saveNewProfileButton.addEventListener('click', async () => {
 		addProfileSection.classList.add('hide')
@@ -36,6 +47,4 @@ export default () => {
 		const activedProfile = await getActivedProfile()
 		setTitle(title)
 	})
-	
-	addFieldRowButton.addEventListener('click', addFieldRow)
 }
