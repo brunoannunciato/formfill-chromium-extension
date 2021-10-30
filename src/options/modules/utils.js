@@ -1,6 +1,6 @@
 import elements from './elements.js'
 
-const { profileNameField } = elements
+const { profileNameField, fieldsContainer } = elements
 
 export const getProfiles = async () => {
 	const profileList = new Promise((resolve) => {
@@ -36,5 +36,26 @@ export const setProfile = async (selectedProfile) => {
 	chrome.storage.sync.set({activedProfile: {
 		...currentProfiles[selectedProfile],
 		name: selectedProfile
+	}})
+}
+
+export const saveProfile = async () => {
+	const rows = fieldsContainer.querySelectorAll('.fields__row')
+	const valuesObject = {}
+
+	rows.forEach(row => {
+		const fieldName = row.querySelector('.fields__name').value
+		const fieldValues = row.querySelector('.fields__values').value
+
+		valuesObject[fieldName] = fieldValues
+	})
+
+	const profiles = await getProfiles()
+	const activedProfile = await getActivedProfile()
+	console.log(activedProfile, profiles)
+
+	chrome.storage.sync.set({profiles: {
+		...profiles,
+		[activedProfile.name]: valuesObject
 	}})
 }
