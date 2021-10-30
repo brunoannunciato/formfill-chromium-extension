@@ -52,3 +52,44 @@ body {
 .header__icon img{
     width: 100%;
 }
+
+/* FIELDS */
+
+.fields__header {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+
+.fields__buttons {
+    align-items: center;
+    display: flex;
+}
+
+.fields__icon {
+    background: none;
+    border: none;
+    max-width: 40px;
+    margin-right: 12px;
+}
+
+.fields__icon img {
+    width: 100%;
+}
+
+.fields__row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.fields__values {
+    resize: none;
+    width: 30%;
+}
+
+.fields__remove-button {
+    align-self: center;
+    max-width: 22px;
+}
