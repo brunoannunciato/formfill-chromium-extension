@@ -48,3 +48,18 @@ export const showChooseProfile = () => {
 	chooseProfileSection.classList.add('hide')
 	addProfileSection.classList.remove('hide')
 }
+
+export const cleanFieldList = () => {
+	fieldsContainer.innerHTML = ''
+}
+
+export const loadProfileFields = async () => {
+	const activedProfile = await getActivedProfile()
+	const profiles = await getProfiles()
+	const activedProfileName = activedProfile.name
+	const fieldsValues = profiles[activedProfileName]
+
+	Object.keys(fieldsValues).forEach(item => {
+		addFieldRow(null, item, fieldsValues[item])
+	})
+}

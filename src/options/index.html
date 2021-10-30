@@ -1,53 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
-    <title>Formfill</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./style.css">
+	<title>Formfill</title>
 </head>
-    <div class="container">
-        <header class="header">
-            <h1 class="header__title">
-                Formfill
-            </h1>
-    
-            <div class="header__menu">
-                <div class="header__profiles">
-                    <label class="header__label" for="profile">
-                        Selecione o perfil:
-                    </label>
-    
-                    <select name="options" id="profile">
-                        <option value="default" disabled selected>Selecione</option>
-                    </select>
-    
-                    <button class="header__icon">
-                        <img src="./images/delete-icon.png" alt="Remover perfil">
-                    </button>
-    
-                    <button class="header__icon">
-                        <img src="./images/add-icon.png" id="add-profile-button" alt="Adicionar perfil">
-                    </button>
-                </div>
+	<div class="container">
+		<header class="header">
+			<h1 class="header__title">
+				Formfill
+			</h1>
+	
+			<div class="header__menu">
+				<div class="header__profiles">
+					<label class="header__label" for="profile">
+						Selecione o perfil:
+					</label>
+	
+					<select name="options" id="profile">
+						<option value="default" disabled selected>Selecione</option>
+					</select>
+	
+					<button class="header__icon">
+						<img src="./images/delete-icon.png" alt="Remover perfil">
+					</button>
+	
+					<button class="header__icon">
+						<img src="./images/add-icon.png" id="add-profile-button" alt="Adicionar perfil">
+					</button>
+				</div>
 
-                <div class="header__add-profile hide">
-                    <label class="header__label" for="profile-name">
-                        Nome do perfil:
-                    </label>
+				<div class="header__add-profile hide">
+					<label class="header__label" for="profile-name">
+						Nome do perfil:
+					</label>
 
-                    <input type="text" id="profile-name">
+					<input type="text" id="profile-name">
 
-                    <button class="header__icon">
-                        <img src="./images/add-icon.png" id="confirm-profile-button" alt="Adicionar perfil">
-                    </button>
-                </div>
-            </div>
-        </header>
-    </div>
+					<button class="header__icon">
+						<img src="./images/add-icon.png" id="confirm-profile-button" alt="Adicionar perfil">
+					</button>
+				</div>
+			</div>
+		</header>
+
+		<main class="fields">
+			<div class="content">
+				<div class="fields__header">
+					<h2 class="fields__title"></h2>
+	
+					<div class="fields__buttons">
+						<button class="fields__icon">
+							<img src="./images/add-icon.png" id="add-field" alt="Adicionar campo">
+						</button>
+
+						<button id="save-button" class="fields_button">
+							Salvar
+						</button>
+					</div>
+				</div>
+
+				<div class="fields__body"></div>
+			</div>
+		</main>
+	</div>
 
 
-    <script src="./app.js"></script>
+	<script type="module" src="./app.js"></script>
 </body>
 </html>

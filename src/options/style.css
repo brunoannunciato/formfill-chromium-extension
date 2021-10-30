@@ -1,96 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+
 html,
 body {
-    height: 100vh;
-    margin: 0;
-    padding: 0;
-    width: 100vw;
+	font-family: 'Open Sans', sans-serif;
+	height: 100vh;
+	margin: 0;
+	padding: 0;
+	width: 100vw;
 }
 
 /* COMPONENTS */
 
 .container {
-    display: block;
-    margin: 0 auto;
-    width: 90%;
+	display: block;
+	margin: 0 auto;
+	width: 90%;
 }
 
 .hide {
-    display: none !important;
+	display: none !important;
 }
 
 /* HEADER */
 
 .header {
-    align-items: center;
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
+	align-items: center;
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+}
+
+.header__title {
+	color: #2E8BC0;
 }
 
 .header__label {
-    font-size: 16px;
-    margin-right: 6px;
+	font-size: 16px;
+	margin-right: 6px;
 }
 
 .header__menu,
 .header__profiles,
 .header__add-profile {
-    align-items: center;
-    display: flex;
+	align-items: center;
+	display: flex;
 }
 
 .header__icon {
-    border: 0;
-    background: transparent;
-    cursor: pointer;
-    height: 18px;
-    padding: 0;
-    width: 18px;
-    margin-left: 6px;
+	border: 0;
+	background: transparent;
+	cursor: pointer;
+	height: 18px;
+	padding: 0;
+	width: 18px;
+	margin-left: 6px;
 }
 
 .header__icon img{
-    width: 100%;
+	width: 100%;
 }
 
 /* FIELDS */
 
 .fields__header {
-    align-items: center;
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 24px;
+	align-items: center;
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 24px;
 }
 
 .fields__buttons {
-    align-items: center;
-    display: flex;
+	align-items: center;
+	display: flex;
 }
 
 .fields__icon {
-    background: none;
-    border: none;
-    max-width: 40px;
-    margin-right: 12px;
-    cursor: pointer;
+	background: none;
+	border: none;
+	max-width: 40px;
+	margin-right: 12px;
+	cursor: pointer;
 }
 
 .fields__icon img {
-    width: 100%;
+	width: 100%;
 }
 
 .fields__row {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 12px;
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 12px;
+}
+
+.fields__name {
+	border-color: #2E8BC0;
+	font-family: 'Open Sans', sans-serif;
+	border-radius: 4px;
+	padding: 8px;
 }
 
 .fields__values {
-    resize: none;
-    width: 30%;
+	border-radius: 4px;
+	border: 2px solid #2E8BC0;
+	font-family: 'Open Sans', sans-serif;
+	padding: 8px;
+	resize: none;
+	width: 30%;
 }
 
 .fields__remove-button {
-    align-self: center;
-    max-width: 22px;
+	align-self: center;
+	max-width: 22px;
+}
+
+.fields_button {
+	border: none;
+	background-color: #2E8BC0;
+	border-radius: 4px;
+	cursor: pointer;
+	color: white;
+	font-family: 'Open Sans', sans-serif;
+	padding: 8px 12px;
 }

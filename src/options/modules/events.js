@@ -3,14 +3,16 @@ import {
 	setTitle,
 	addFieldRow,
 	renderProfileList,
-	showChooseProfile
+	showChooseProfile,
+	cleanFieldList,
+	loadProfileFields
 } from './view.js'
 
 import {
 	setProfile,
 	getActivedProfile,
 	addProfile,
-	saveProfile
+	saveProfile,
 } from './utils.js'
 
 const {
@@ -42,9 +44,12 @@ export default () => {
 	
 	profileSelect.addEventListener('change', async (event) => {
 		const title = event.target.value
-	
 		await setProfile(title)
+		cleanFieldList()
+		await loadProfileFields(addFieldRow)
 		const activedProfile = await getActivedProfile()
 		setTitle(title)
 	})
+
+	loadProfileFields()
 }
