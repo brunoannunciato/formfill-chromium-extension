@@ -1,7 +1,11 @@
 import { getProfiles, getActivedProfile } from "./utils.js"
 import elements from "./elements.js"
 
-const { profileSelect } = elements
+const { profileSelect,
+	chooseProfileSection,
+	addProfileSection,
+	fieldsContainer
+} = elements
 
 export const setTitle = title => {
 	const titleElement = document.querySelector('.fields__title')
@@ -10,7 +14,6 @@ export const setTitle = title => {
 }
 
 export const addFieldRow = (_, fieldName = '', values = '') => {
-	const rowsContainer = document.querySelector('.fields__body')
 	const template = `
 	<div class="fields__row">
 		<input type="text" class="fields__name" placeholder="Nome do campo" value="${fieldName}">
@@ -21,7 +24,7 @@ export const addFieldRow = (_, fieldName = '', values = '') => {
 	</div>
 	`
 
-	rowsContainer.insertAdjacentHTML('beforeEnd', template)
+	fieldsContainer.insertAdjacentHTML('beforeEnd', template)
 }
 
 export const renderProfileList = async () => {
@@ -39,4 +42,9 @@ export const renderProfileList = async () => {
 		`
 		profileSelect.insertAdjacentHTML('afterBegin', template)
 	})
+}
+
+export const showChooseProfile = () => {
+	chooseProfileSection.classList.add('hide')
+	addProfileSection.classList.remove('hide')
 }
