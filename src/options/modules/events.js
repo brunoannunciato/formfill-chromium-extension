@@ -46,8 +46,7 @@ export default () => {
 		const title = event.target.value
 		await setProfile(title)
 		cleanFieldList()
-		await loadProfileFields(addFieldRow)
-		const activedProfile = await getActivedProfile()
+		await loadProfileFields()
 		setTitle(title)
 	})
 
