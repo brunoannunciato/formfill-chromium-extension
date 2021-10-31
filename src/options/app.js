@@ -6,5 +6,5 @@ window.addEventListener('DOMContentLoaded', async () => {
 	renderProfileList()
 	dispatchEvents()
 	const activedProfile = await getActivedProfile()
-	setTitle(activedProfile.name)
+	setTitle(activedProfile?.name || 'Crie um perfil acima para começar a usar')
 })

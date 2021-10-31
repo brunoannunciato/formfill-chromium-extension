@@ -28,7 +28,7 @@ export const addFieldRow = (_, fieldName = '', values = '') => {
 }
 
 export const renderProfileList = async () => {
-	const profiles = await getProfiles()
+	const profiles = await getProfiles() || {}
 	const activedProfile = await getActivedProfile()
 
 	const profileNames = Object.keys(profiles)
@@ -36,7 +36,7 @@ export const renderProfileList = async () => {
 	
 	profileNames.forEach(profile => {
 		const template = `
-			<option value="${profile}" ${activedProfile.name === profile ? 'selected' : ''}>
+			<option value="${profile}" ${activedProfile?.name === profile ? 'selected' : ''}>
 				${profile}
 			</option>
 		`
@@ -56,7 +56,7 @@ export const cleanFieldList = () => {
 export const loadProfileFields = async () => {
 	const activedProfile = await getActivedProfile()
 	const profiles = await getProfiles()
-	const activedProfileName = activedProfile.name
+	const activedProfileName = activedProfile?.name
 	const fieldsValues = profiles[activedProfileName]
 
 	Object.keys(fieldsValues).forEach(item => {
