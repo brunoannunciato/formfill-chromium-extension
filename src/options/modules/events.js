@@ -13,7 +13,7 @@ import {
 	getActivedProfile,
 	addProfile,
 	saveProfile,
-} from './utils.js'
+} from '../../utils/index.js'
 
 const {
 	addProfileButton,
@@ -36,7 +36,7 @@ export default () => {
 		await addProfile()
 	
 		chrome.storage.onChanged.addListener(async (changes) => {
-			const newValues = {...changes.profiles.oldValue, ...changes.profiles.newValue}
+			const newValues = {...changes.profiles?.oldValue, ...changes.profiles?.newValue}
 	
 			await renderProfileList(newValues)
 		})

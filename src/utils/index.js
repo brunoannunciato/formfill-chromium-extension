@@ -1,4 +1,4 @@
-import elements from './elements.js'
+import elements from '../options/modules/elements.js'
 
 const { profileNameField, fieldsContainer } = elements
 

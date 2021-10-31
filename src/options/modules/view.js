@@ -1,4 +1,4 @@
-import { getProfiles, getActivedProfile } from "./utils.js"
+import { getProfiles, getActivedProfile } from "../../utils/index.js"
 import elements from "./elements.js"
 
 const { profileSelect,
@@ -57,7 +57,7 @@ export const loadProfileFields = async () => {
 	const activedProfile = await getActivedProfile()
 	const profiles = await getProfiles()
 	const activedProfileName = activedProfile?.name
-	const fieldsValues = profiles[activedProfileName]
+	const fieldsValues = profiles?.activedProfileName || {}
 
 	Object.keys(fieldsValues).forEach(item => {
 		addFieldRow(null, item, fieldsValues[item])
