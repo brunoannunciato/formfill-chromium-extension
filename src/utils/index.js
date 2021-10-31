@@ -27,7 +27,9 @@ export const addProfile = async () => {
 	const newProfiles = {...currentProfiles, [profileNameField.value]: {}}
 
 	chrome.storage.sync.set({profiles: newProfiles})
+	await setProfile(profileNameField?.value)
 	profileNameField.value = ''
+
 }
 
 export const setProfile = async (selectedProfile) => {
