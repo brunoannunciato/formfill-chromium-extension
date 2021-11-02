@@ -57,7 +57,7 @@ export const loadProfileFields = async () => {
 	const activedProfile = await getActivedProfile()
 	const profiles = await getProfiles()
 	const activedProfileName = activedProfile?.name
-	const fieldsValues = profiles[activedProfileName] || {}
+	const fieldsValues = profiles && profiles[activedProfileName]
 
 	Object.keys(fieldsValues).forEach(item => {
 		addFieldRow(null, item, fieldsValues[item])

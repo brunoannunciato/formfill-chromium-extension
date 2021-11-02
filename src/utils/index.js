@@ -1,7 +1,3 @@
-import elements from '../options/modules/elements.js'
-
-const { profileNameField, fieldsContainer } = elements
-
 export const getProfiles = async () => {
 	const profileList = new Promise((resolve) => {
 		chrome.storage.sync.get(['profiles'], (response) => {
@@ -22,14 +18,12 @@ export const getActivedProfile = async () => {
 	return activedProfile
 }
 
-export const addProfile = async () => {
+export const addProfile = async (profileName) => {
 	const currentProfiles = await getProfiles()
-	const newProfiles = {...currentProfiles, [profileNameField.value]: {}}
+	const newProfiles = {...currentProfiles, [profileName]: {}}
 
 	chrome.storage.sync.set({profiles: newProfiles})
-	await setProfile(profileNameField?.value)
-	profileNameField.value = ''
-
+	await setProfile(profileName)
 }
 
 export const setProfile = async (selectedProfile) => {
@@ -41,20 +35,9 @@ export const setProfile = async (selectedProfile) => {
 	}})
 }
 
-export const saveProfile = async () => {
-	const rows = fieldsContainer.querySelectorAll('.fields__row')
-	const valuesObject = {}
-
-	rows.forEach(row => {
-		const fieldName = row.querySelector('.fields__name').value
-		const fieldValues = row.querySelector('.fields__values').value
-
-		valuesObject[fieldName] = fieldValues
-	})
-
+export const saveProfile = async (valuesObject = {}) => {
 	const profiles = await getProfiles()
 	const activedProfile = await getActivedProfile()
-	console.log(activedProfile, profiles)
 
 	chrome.storage.sync.set({profiles: {
 		...profiles,

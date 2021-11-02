@@ -4,11 +4,16 @@
 	"version": "0.1.0",
 	"manifest_version": 3,
 	"options_page": "src/options/index.html",
-	"permissions": ["storage", "scripting", "activeTab"],
+	"permissions": [
+		"storage",
+		"scripting",
+		"activeTab"
+	],
 	"action": {
 		"default_title": "Fill page forms"
 	},
 	"background": {
-		"service_worker": "src/background/index.js"
+		"service_worker": "service_worker.js",
+		"type": "module"
 	}
 }
