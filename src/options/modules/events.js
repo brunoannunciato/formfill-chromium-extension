@@ -42,6 +42,8 @@ export default () => {
 		})
 
 		saveProfile(valuesObject)
+
+		alert('✅!!')
 	})
 	
 	saveNewProfileButton.addEventListener('click', async () => {
