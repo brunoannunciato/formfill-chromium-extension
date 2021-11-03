@@ -93,6 +93,7 @@ body {
 }
 
 .fields__name {
+	border-style: solid;
 	border-color: #2E8BC0;
 	font-family: 'Open Sans', sans-serif;
 	border-radius: 4px;
