@@ -1,8 +1,11 @@
-import { getProfiles } from './src/background/teste.js'
+import { main } from './src/background/index.js';
 
 try {
 	chrome.action.onClicked.addListener(async (tab) => {
-		const profiles = await getProfiles()
+		chrome.scripting.executeScript({
+			func: main,
+			target: { tabId: tab.id }
+		})
 	})
 } catch (error) {
 	console.error(error)
