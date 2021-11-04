@@ -55,7 +55,8 @@ export default () => {
 		chooseProfileSection.classList.remove('hide')
 		await addProfile(newProfileName)
 
-		profileNameField.innerHTML = ''
+		await setProfile(profileNameField.value)
+		profileNameField.value = ''
 	
 		chrome.storage.onChanged.addListener(async (changes) => {
 			const newValues = {...changes.profiles?.oldValue, ...changes.profiles?.newValue}
