@@ -1,4 +1,6 @@
 import elements from './elements.js'
+import { contextMenu as loadContextMenu } from '../../contextMenu/index.js'
+
 import {
 	addFieldRow,
 	cleanFieldList,
@@ -60,6 +62,8 @@ export default () => {
 	
 			await renderProfileList(newValues)
 		})
+
+		loadContextMenu()
 	})
 	
 	profileSelect.addEventListener('change', async (event) => {
@@ -68,6 +72,7 @@ export default () => {
 		cleanFieldList()
 		await loadProfileFields()
 		setTitle(title)
+		loadContextMenu()
 	})
 
 	loadProfileFields()

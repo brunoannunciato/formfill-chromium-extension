@@ -1,4 +1,5 @@
-import { background } from './src/background/index.js';
+import { background } from './src/background/index.js'
+import { contextMenu } from './src/contextMenu/index.js'
 
 try {
 	chrome.action.onClicked.addListener(async (tab) => {
@@ -7,6 +8,8 @@ try {
 			target: { tabId: tab.id }
 		})
 	})
+
+	contextMenu()
 } catch (error) {
 	console.error(error)
 }
