@@ -46,6 +46,12 @@ body {
 	display: flex;
 }
 
+.header__select {
+	font-family: 'Open Sans', sans-serif;
+	padding: 6px 12px;
+	margin-right: 24px;
+}
+
 .header__icon {
 	border: 0;
 	background: transparent;
