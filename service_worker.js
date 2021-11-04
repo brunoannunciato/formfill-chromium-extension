@@ -1,9 +1,9 @@
-import { main } from './src/background/index.js';
+import { background } from './src/background/index.js';
 
 try {
 	chrome.action.onClicked.addListener(async (tab) => {
 		chrome.scripting.executeScript({
-			func: main,
+			func: background,
 			target: { tabId: tab.id }
 		})
 	})

@@ -1,4 +1,4 @@
-export const main = () => {
+export const background = () => {
 	const pageFields = document.querySelectorAll('input')
 
 	const getProfiles = () => {
