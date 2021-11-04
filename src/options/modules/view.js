@@ -18,7 +18,7 @@ export const addFieldRow = (_, fieldName = '', values = '') => {
 	<div class="fields__row">
 		<input type="text" class="fields__name" placeholder="Nome do campo" value="${fieldName}">
 
-		<textarea placeholder="Valores separados por vírgula" class="fields__values">${values}</textarea>
+		<textarea placeholder="Valor do campo" class="fields__values">${values}</textarea>
 
 		<img src="./images/delete-icon.png" id="remove-field" class="fields__remove-button" alt="Remover caompo">
 	</div>
