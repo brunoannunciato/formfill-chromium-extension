@@ -20,14 +20,19 @@ module.exports = {
         exclude: /node_modules/
       }, {
         test: /\.scss$/,
-          use: [{
-            loader: "style-loader"
-          }, {
-            loader: "css-loader" 
-          }, {
-            loader: "sass-loader"
-          }]
-    }
+        use: [{
+          loader: "style-loader"
+        }, {
+          loader: "css-loader" 
+        }, {
+          loader: "sass-loader"
+        }]
+      }, {
+        test: /\.(jpg|jpeg|png|gif|mp3|svg|ttf|woff2|woff|eot)$/gi,
+        use: {
+          loader: "file-loader"
+        }
+      }
     ]
   },
   devServer: {
