@@ -1,0 +1,16 @@
+.button {
+  background-color: var(--primary-color-light);
+  color: white;
+  cursor: pointer;
+  font-family: 'Shippori Antique B1', sans-serif;
+  font-size: .875rem;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: box-shadow .3s ease, background-color .3s ease;
+
+  &:hover {
+    box-shadow: 1px 5px 16px -5px var(--primary-color-light);
+    background-color: var(--primary-color);
+  }
+}
