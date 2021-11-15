@@ -1,0 +1,11 @@
+.home {
+  padding-top: 32px;
+
+  .profile-list {
+    &__header {
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}

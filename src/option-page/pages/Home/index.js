@@ -1,6 +1,8 @@
 import React from 'react'
 import Button from '../../components/Button'
 
+import './home.scss'
+
 const Home = () => (
   <main className="home">
     <div className="container">
@@ -13,6 +15,10 @@ const Home = () => (
           <Button
             title="New profile"
           />
+        </div>
+
+        <div className="profile-list__body">
+          There is no profile created yet. To create your first profile, click the button above.
         </div>
       </div>
     </div>
