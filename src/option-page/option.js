@@ -1,14 +1,23 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
+import React, { useState } from 'react'
+import { render } from 'react-dom'
 import Header from './components/Header'
+import Home from './pages/Home'
 import './style.scss'
 
 const App = () => {
+  const [currentPage, setCurrentPage] = useState('home')
+
+  const routes = {
+    home: <Home/>
+  }
+
   return (
     <div>
       <Header/>
+
+      { routes[currentPage] }
     </div>
   )
 }
 
-ReactDOM.render(<App />, document.getElementById('root'))
+render(<App />, document.getElementById('root'))
