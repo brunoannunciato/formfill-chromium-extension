@@ -1,11 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import Header from './components/Header'
 import './style.scss'
 
 const App = () => {
   return (
     <div>
-      formfill
+      <Header/>
     </div>
   )
 }
