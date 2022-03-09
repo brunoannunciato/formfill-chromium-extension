@@ -1,0 +1,35 @@
+.input-wrapper {
+  position: relative;
+
+  &__label {
+    background-color: white;
+    position: absolute;
+    font-size: 1.125rem;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #bbb;
+    margin: 0;
+    pointer-events: none;
+    padding: 0 4px;
+    transition: all 0.3s ease;
+  }
+
+  &__input-text {
+    border: 1px solid #bbb;
+    padding: 8px 16px;
+    font-size: 1.125rem;
+    border-radius: 4px;
+
+    &--filled,
+    &:focus {
+      border: 1px solid var(--primary-color);
+
+      & + .input-wrapper__label {
+        font-size: 1rem;
+        top: -2px;
+        color: var(--primary-color);
+      }
+    }
+  }
+}
