@@ -26,9 +26,9 @@ const InputText =  React.forwardRef(({ label, ...props }, ref) => {
         { ...props } 
       />
 
-      <p className="input-wrapper__label">
+      <label className="input-wrapper__label">
         { label }
-      </p>
+      </label>
     </div>
   )
 })
