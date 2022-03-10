@@ -4,7 +4,7 @@
   &__label {
     background-color: white;
     position: absolute;
-    font-size: 1.125rem;
+    font-size: 0.875rem;
     left: 16px;
     top: 50%;
     transform: translateY(-50%);
@@ -18,7 +18,7 @@
   &__input-text {
     border: 1px solid #bbb;
     padding: 8px 16px;
-    font-size: 1.125rem;
+    font-size: 0.875rem;
     border-radius: 4px;
 
     &--filled,
@@ -26,7 +26,7 @@
       border: 1px solid var(--primary-color);
 
       & + .input-wrapper__label {
-        font-size: 1rem;
+        font-size: 0.65rem;
         top: -2px;
         color: var(--primary-color);
       }
