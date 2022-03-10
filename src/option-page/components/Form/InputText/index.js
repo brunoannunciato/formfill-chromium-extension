@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 import './input-text.scss'
 
-const InputText = ({ label, ...props }) => {
+const InputText =  React.forwardRef(({ label, ...props }, ref) => {
   const [isFilled, setIsFilled] = useState(false)
 
   const checkIfIsFilled = (event) => {
@@ -22,6 +22,7 @@ const InputText = ({ label, ...props }) => {
       <input
         className={`input-wrapper__input-text ${isFilled ? 'input-wrapper__input-text--filled' : ''}`}
         onInput={ (event) => checkIfIsFilled(event ) }
+        ref={ ref }
         { ...props } 
       />
 
@@ -30,6 +31,6 @@ const InputText = ({ label, ...props }) => {
       </p>
     </div>
   )
-}
+})
 
 export default InputText
