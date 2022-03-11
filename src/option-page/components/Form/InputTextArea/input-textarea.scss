@@ -1,0 +1,37 @@
+.textarea-wrapper {
+  position: relative;
+
+  &__label {
+    background-color: white;
+    position: absolute;
+    font-size: 0.875rem;
+    left: 16px;
+    top: 10px;
+    color: #bbb;
+    margin: 0;
+    pointer-events: none;
+    padding: 0 4px;
+    transition: all 0.3s ease;
+  }
+
+  &__input-textarea {
+    border: 1px solid #bbb;
+    padding: 8px 16px;
+    font-size: 0.875rem;
+    border-radius: 4px;
+    box-sizing: border-box;
+    width: 100%;
+    resize: none;
+
+    &--filled,
+    &:focus {
+      border: 1px solid var(--primary-color);
+
+      & + .textarea-wrapper__label {
+        font-size: 0.65rem;
+        top: -2px;
+        color: var(--primary-color);
+      }
+    }
+  }
+}
