@@ -20,6 +20,8 @@
     padding: 8px 16px;
     font-size: 0.875rem;
     border-radius: 4px;
+    box-sizing: border-box;
+    width: 100%;
 
     &--filled,
     &:focus {
