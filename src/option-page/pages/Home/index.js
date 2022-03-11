@@ -5,9 +5,10 @@ import Modal from '../../components/Modal'
 import { useCloseModal, useOpenModal } from './hooks'
 
 import './home.scss'
+import NewProfileForm from '../../components/NewProfileForm'
 
 const Home = () => {
-  const [createNewProfile, setCreateNewProfile] = useState(false)
+  const [isCreatingNewProfile, setIsCreatingNewProfile] = useState(true)
 
   return (
     <main className="home">
@@ -19,7 +20,7 @@ const Home = () => {
             </h2>
 
             <Button
-              onClick={ () => useOpenModal(setCreateNewProfile) }
+              onClick={ () => useOpenModal(setIsCreatingNewProfile) }
               title="New profile"
             />
           </div>
@@ -31,10 +32,10 @@ const Home = () => {
       </div>
 
       <Modal
-        isVisible={ createNewProfile }
-        onCloseModal={ () => useCloseModal(setCreateNewProfile) }
+        isVisible={ isCreatingNewProfile }
+        onCloseModal={ () => useCloseModal(setIsCreatingNewProfile) }
       >
-        Conteúdo da modal
+        <NewProfileForm />
       </Modal>
     </main>
   )
