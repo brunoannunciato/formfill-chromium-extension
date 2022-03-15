@@ -1,0 +1,26 @@
+.new-field {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  .input-wrapper {
+    margin-bottom: 0;
+  }
+
+  &__delete {
+    color: var(--primary-color);
+    cursor: pointer;
+    font-size: 1.125rem;
+    transform: rotate(45deg);
+    border-radius: 100%;
+    border: 1px solid var(--primary-color);
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    line-height: 0;
+  }
+}
