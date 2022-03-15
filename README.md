@@ -1,2 +1,7 @@
-# browser-extension-react-boilerplate
-A boilerplate to development of chorme extensions using React.js and SASS
+# Formfill
+
+A chromium extension to fill forms automatically using pre saved data separated for profiles.
+
+## MVP
+
+There a functional version of this project on `mvp` branch.
