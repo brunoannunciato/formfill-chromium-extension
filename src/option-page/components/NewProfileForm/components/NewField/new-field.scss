@@ -1,8 +1,8 @@
 .new-field {
   align-items: center;
-  display: flex;
+  display: grid;
   justify-content: space-between;
-  flex-wrap: wrap;
+  grid-template-columns: auto auto auto;
 
   .input-wrapper {
     margin-bottom: 0;
