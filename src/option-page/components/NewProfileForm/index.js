@@ -3,8 +3,10 @@ import { useForm } from 'react-hook-form'
 import InputCheckbox from '../Form/InputCheckbox'
 import InputText from '../Form/InputText'
 import InputTextArea from '../Form/InputTextArea'
+import Button from '../Button'
 
 import './new-profile-form.scss'
+import NewField from './components/NewField'
 
 const NewProfileForm = () => {
   const [isUrlBased, setIsUrlBased] = useState(false)
@@ -41,6 +43,24 @@ const NewProfileForm = () => {
             {...register("urls", { required: true })}
           /> : null 
       }
+
+      <div className="new-profile-form__form-fields">
+        <div className="new-profile-form__fields-header">
+          <h2 className="new-profile-form__title">
+            Form fields
+          </h2>
+
+          <Button>
+            add new field
+          </Button>
+        </div>
+
+        <div className="new-profile-form__fields-wrapper">
+          <NewField/>
+        </div>
+      </div>
+
+
 
       <input type="submit" /> 
     </form>

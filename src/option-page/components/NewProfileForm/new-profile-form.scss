@@ -2,4 +2,15 @@
   .input-wrapper {
     margin-bottom: 12px;
   }
+
+  &__form-fields {
+    margin-top: 24px;
+  }
+
+  &__fields-header {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
 }
