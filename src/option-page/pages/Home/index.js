@@ -19,10 +19,7 @@ const Home = () => {
               Profiles:
             </h2>
 
-            <Button
-              onClick={ () => useOpenModal(setIsCreatingNewProfile) }
-              title="New profile"
-            />
+            <Button onClick={ () => useOpenModal(setIsCreatingNewProfile) } > New profile </Button>
           </div>
 
           <div className="profile-list__body">
