@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { useForm, useFieldArray } from 'react-hook-form';
+
 import InputCheckbox from '../Form/InputCheckbox';
 import InputText from '../Form/InputText';
 import InputTextArea from '../Form/InputTextArea';
@@ -18,8 +19,15 @@ const NewProfileForm = () => {
   const {
     register,
     handleSubmit,
+    control,
     formState: { errors },
   } = useForm();
+
+  useFieldArray({
+    control,
+    name: 'formFields',
+  });
+
   const onSubmit = (data) => console.log(data);
 
   const toggleUrlBased = (event) => {
@@ -67,6 +75,7 @@ const NewProfileForm = () => {
               <NewField
                 key={fieldId}
                 id={fieldId}
+                register={register}
                 onDeleteField={() => {
                   deleteField(fieldsIds, setFieldsId, fieldId);
                 }}

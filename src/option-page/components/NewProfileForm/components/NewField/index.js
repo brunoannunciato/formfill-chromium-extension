@@ -1,25 +1,24 @@
 import React from 'react';
-import { useForm } from 'react-hook-form';
 import InputRadio from '../../../Form/InputRadio';
 import InputText from '../../../Form/InputText';
 
 import './new-field.scss';
 
-const NewField = ({ onDeleteField, disableDelete, onSubmit, id }) => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-
+const NewField = ({ onDeleteField, disableDelete, register, id }) => {
   return (
     <div className="new-field">
       <div className="new-field__column">
-        <InputText label="field selector" {...register(`${id}-selector`)} />
+        <InputText
+          label="field selector"
+          {...register(`formFields.${id}.name`)}
+        />
       </div>
 
       <div className="new-field__column">
-        <InputText label="field values" />
+        <InputText
+          label="field values"
+          {...register(`formFields.${id}.values`)}
+        />
       </div>
 
       <div className="new-field__column">
@@ -37,21 +36,56 @@ const NewField = ({ onDeleteField, disableDelete, onSubmit, id }) => {
       </div>
 
       <div className="new-field__column">
-        <InputRadio name="selector" label="name" />
+        <InputRadio
+          name="selector"
+          label="name"
+          value="name"
+          {...register(`formFields.${id}.selectorType`)}
+        />
 
-        <InputRadio name="selector" label="id" />
+        <InputRadio
+          name="selector"
+          label="id"
+          value="id"
+          {...register(`formFields.${id}.selectorType`)}
+        />
 
-        <InputRadio name="selector" label="css selector" />
+        <InputRadio
+          name="selector"
+          label="css selector"
+          value="css"
+          {...register(`formFields.${id}.selectorType`)}
+        />
       </div>
 
       <div className="new-field__column">
-        <InputRadio name="sppliter" label="," />
+        <InputRadio
+          name="sppliter"
+          label=","
+          value=","
+          {...register(`formFields.${id}.separator`)}
+        />
 
-        <InputRadio name="sppliter" label="|" />
+        <InputRadio
+          name="sppliter"
+          label="|"
+          value="|"
+          {...register(`formFields.${id}.separator`)}
+        />
 
-        <InputRadio name="sppliter" label=";" />
+        <InputRadio
+          name="sppliter"
+          label=";"
+          value=";"
+          {...register(`formFields.${id}.separator`)}
+        />
 
-        <InputRadio name="sppliter" label="/" />
+        <InputRadio
+          name="sppliter"
+          label="/"
+          value="/"
+          {...register(`formFields.${id}.separator`)}
+        />
       </div>
     </div>
   );
