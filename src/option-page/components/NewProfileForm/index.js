@@ -101,7 +101,7 @@ const NewProfileForm = () => {
         </div>
       </div>
 
-      <input type="submit" />
+      <Button type="submit">Save profile</Button>
     </form>
   );
 };
