@@ -64,7 +64,12 @@ const NewProfileForm = () => {
         <div className="new-profile-form__fields-header">
           <h2 className="new-profile-form__title">Form fields</h2>
 
-          <Button onClick={() => useAddNewField(fieldsIds, setFieldsId)}>
+          <Button
+            onClick={(event) => {
+              event.preventDefault();
+              useAddNewField(fieldsIds, setFieldsId);
+            }}
+          >
             add new field
           </Button>
         </div>
