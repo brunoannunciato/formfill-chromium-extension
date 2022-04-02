@@ -21,7 +21,11 @@ const NewProfileForm = () => {
     handleSubmit,
     control,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    defaultValues: {
+      formFields: [{ selectorType: 'name', separator: ',' }],
+    },
+  });
 
   useFieldArray({
     control,
