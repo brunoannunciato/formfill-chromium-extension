@@ -1,36 +1,38 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 
-import './input-text.scss'
+import './input-text.scss';
 
-const InputText =  React.forwardRef(({ label, ...props }, ref) => {
-  const [isFilled, setIsFilled] = useState(false)
+const InputText = React.forwardRef(({ label, children, ...props }, ref) => {
+  const [isFilled, setIsFilled] = useState(false);
 
   const checkIfIsFilled = (event) => {
-    const element = event.target
+    const element = event.target;
 
     if (element.value.length > 0) {
-      setIsFilled(true)
-      return
+      setIsFilled(true);
+      return;
     }
 
-    setIsFilled(false)
-  }
+    setIsFilled(false);
+  };
 
   return (
-    <div className="input-wrapper">
+    <>
+      <div className="input-wrapper">
+        <input
+          className={`input-wrapper__input-text ${
+            isFilled ? 'input-wrapper__input-text--filled' : ''
+          }`}
+          onInput={(event) => checkIfIsFilled(event)}
+          ref={ref}
+          {...props}
+        />
 
-      <input
-        className={`input-wrapper__input-text ${isFilled ? 'input-wrapper__input-text--filled' : ''}`}
-        onInput={ (event) => checkIfIsFilled(event ) }
-        ref={ ref }
-        { ...props } 
-      />
+        <label className="input-wrapper__label">{label}</label>
+      </div>
+      {children}
+    </>
+  );
+});
 
-      <label className="input-wrapper__label">
-        { label }
-      </label>
-    </div>
-  )
-})
-
-export default InputText
+export default InputText;

@@ -5,6 +5,7 @@ import InputCheckbox from '../Form/InputCheckbox';
 import InputText from '../Form/InputText';
 import InputTextArea from '../Form/InputTextArea';
 import Button from '../Button';
+import ErrorAlert from '../Form/ErrorAlert';
 
 import hooks from './hooks';
 
@@ -32,7 +33,9 @@ const NewProfileForm = () => {
     name: 'formFields',
   });
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    console.log(data);
+  };
 
   const toggleUrlBased = (event) => {
     const element = event.target;
@@ -46,8 +49,10 @@ const NewProfileForm = () => {
 
       <InputText
         label="profile name"
-        {...register('profileName', { required: true })}
-      />
+        {...register('profileName', { required: 'Profile name is required' })}
+      >
+        <ErrorAlert errors={errors} name="profileName" />
+      </InputText>
 
       <InputText label="description (optional)" {...register('description')} />
 
@@ -60,7 +65,7 @@ const NewProfileForm = () => {
         <InputTextArea
           helperText="Use comma between urls, example: www.google.com, www.bruno.dev"
           label="URLs"
-          {...register('urls', { required: true })}
+          {...register('urls')}
         />
       ) : null}
 
@@ -82,6 +87,7 @@ const NewProfileForm = () => {
           {fieldsIds.map((fieldId) => {
             return (
               <NewField
+                errors={errors}
                 key={fieldId}
                 id={fieldId}
                 register={register}
