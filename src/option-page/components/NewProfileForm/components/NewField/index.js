@@ -10,14 +10,14 @@ const NewField = ({ onDeleteField, disableDelete, register, id }) => {
       <div className="new-field__column">
         <InputText
           label="field selector"
-          {...register(`formFields.${id}.name`)}
+          {...register(`formFields.${id}.name`, { required: true })}
         />
       </div>
 
       <div className="new-field__column">
         <InputText
           label="field values"
-          {...register(`formFields.${id}.values`)}
+          {...register(`formFields.${id}.values`, { required: true })}
         />
       </div>
 
@@ -40,21 +40,21 @@ const NewField = ({ onDeleteField, disableDelete, register, id }) => {
           name="selector"
           label="name"
           value="name"
-          {...register(`formFields.${id}.selectorType`)}
+          {...register(`formFields.${id}.selectorType`, { required: true })}
         />
 
         <InputRadio
           name="selector"
           label="id"
           value="id"
-          {...register(`formFields.${id}.selectorType`)}
+          {...register(`formFields.${id}.selectorType`, { required: true })}
         />
 
         <InputRadio
           name="selector"
           label="css selector"
           value="css"
-          {...register(`formFields.${id}.selectorType`)}
+          {...register(`formFields.${id}.selectorType`, { required: true })}
         />
       </div>
 
@@ -63,21 +63,21 @@ const NewField = ({ onDeleteField, disableDelete, register, id }) => {
           name="sppliter"
           label=","
           value=","
-          {...register(`formFields.${id}.separator`)}
+          {...register(`formFields.${id}.separator`, { required: true })}
         />
 
         <InputRadio
           name="sppliter"
           label="|"
           value="|"
-          {...register(`formFields.${id}.separator`)}
+          {...register(`formFields.${id}.separator`, { required: true })}
         />
 
         <InputRadio
           name="sppliter"
           label=";"
           value=";"
-          {...register(`formFields.${id}.separator`)}
+          {...register(`formFields.${id}.separator`, { required: true })}
         />
 
         <InputRadio
