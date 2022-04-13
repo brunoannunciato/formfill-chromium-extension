@@ -6,6 +6,7 @@ import InputText from '../Form/InputText';
 import InputTextArea from '../Form/InputTextArea';
 import Button from '../Button';
 import ErrorAlert from '../Form/ErrorAlert';
+import profiles from '../../utils/profiles';
 
 import hooks from './hooks';
 
@@ -34,7 +35,7 @@ const NewProfileForm = () => {
   });
 
   const onSubmit = (data) => {
-    console.log(data);
+    profiles.add(data);
   };
 
   const toggleUrlBased = (event) => {
@@ -46,16 +47,13 @@ const NewProfileForm = () => {
   return (
     <form className="new-profile-form" onSubmit={handleSubmit(onSubmit)}>
       <h2 className="new-profile-form__title">Profile info</h2>
-
       <InputText
         label="profile name"
         {...register('profileName', { required: 'Profile name is required' })}
       >
         <ErrorAlert errors={errors} name="profileName" />
       </InputText>
-
       <InputText label="description (optional)" {...register('description')} />
-
       <InputCheckbox
         name="by-url"
         label="Automatically activate by URL"
@@ -68,7 +66,6 @@ const NewProfileForm = () => {
           {...register('urls')}
         />
       ) : null}
-
       <div className="new-profile-form__form-fields">
         <div className="new-profile-form__fields-header">
           <h2 className="new-profile-form__title">Form fields</h2>
@@ -100,7 +97,6 @@ const NewProfileForm = () => {
           })}
         </div>
       </div>
-
       <Button type="submit">Save profile</Button>
     </form>
   );
