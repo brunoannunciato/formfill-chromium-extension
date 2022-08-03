@@ -14,10 +14,12 @@ const Home = () => {
   const [profileList, setProfileList] = useState([]);
 
   useEffect(() => {
-    profiles.getAll().then((data) => {
-      setProfileList(data);
-    });
-  }, []);
+    if (isCreatingNewProfile === false) {
+      profiles.getAll().then((data) => {
+        setProfileList(data);
+      });
+    }
+  }, [isCreatingNewProfile]);
 
   return (
     <main className="home">
