@@ -14,14 +14,11 @@ const Home = () => {
   const [profileList, setProfileList] = useState([]);
 
   useEffect(() => {
-    console.log('asdsa');
     profiles.getAll().then((data) => {
       console.log({ data });
       setProfileList(data);
     });
   }, []);
-
-  console.log(profileList);
 
   return (
     <main className="home">
@@ -37,7 +34,7 @@ const Home = () => {
           </div>
 
           <div className="profile-list__body">
-            {profileList.length ? (
+            {profileList?.length ? (
               <ProfileList profiles={profileList} />
             ) : (
               `There is no profile created yet. To create your first profile, click the button above.`
