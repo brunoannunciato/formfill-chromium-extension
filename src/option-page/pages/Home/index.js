@@ -15,7 +15,6 @@ const Home = () => {
 
   useEffect(() => {
     profiles.getAll().then((data) => {
-      console.log({ data });
       setProfileList(data);
     });
   }, []);

@@ -34,10 +34,10 @@ const NewProfileForm = ({ onSubmit: closeModal }) => {
     name: 'formFields',
   });
 
-  console.log({ closeModal });
-
   const onSubmit = (data) => {
-    profiles.add(data);
+    profiles.add(data).then(() => {
+      closeModal();
+    });
   };
 
   const toggleUrlBased = (event) => {
