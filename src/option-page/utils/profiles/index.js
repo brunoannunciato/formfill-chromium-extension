@@ -15,8 +15,6 @@ const add = (profile) => {
 
     chrome.storage.sync.set({ profiles });
   });
-
-  const profiles = [profile];
 };
 
 export default {
