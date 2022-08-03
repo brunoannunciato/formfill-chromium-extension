@@ -1,32 +1,25 @@
 const getAll = () => {
   const profileList = new Promise((resolve) => {
     chrome.storage.sync.get(['profiles'], (response) => {
-      resolve(response.profiles)
-    })
-  })
+      resolve(response.profiles);
+    });
+  });
 
-  return profileList
-}
+  return profileList;
+};
 
 const add = (profile) => {
-  getAll()
-    .then(savedProfiles => {
-      const profiles = [
-        ...savedProfiles,
-        profile
-      ]
+  getAll().then((savedProfiles) => {
+    const storageProfiles = savedProfiles || [];
+    const profiles = [...storageProfiles, profile];
 
+    chrome.storage.sync.set({ profiles });
+  });
 
-      chrome.storage.sync.set({profiles})
-    })
-
-  const profiles = [
-    profile
-  ]
-
-}
+  const profiles = [profile];
+};
 
 export default {
   add,
-  getAll
-}
+  getAll,
+};
