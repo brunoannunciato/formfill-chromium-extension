@@ -47,7 +47,11 @@ const Home = () => {
         isVisible={isCreatingNewProfile}
         onCloseModal={() => useCloseModal(setIsCreatingNewProfile)}
       >
-        <NewProfileForm />
+        <NewProfileForm
+          onSubmit={() => {
+            useCloseModal(setIsCreatingNewProfile);
+          }}
+        />
       </Modal>
     </main>
   );

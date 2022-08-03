@@ -13,7 +13,7 @@ import hooks from './hooks';
 import './new-profile-form.scss';
 import NewField from './components/NewField';
 
-const NewProfileForm = () => {
+const NewProfileForm = ({ onSubmit: closeModal }) => {
   const { useAddNewField, deleteField } = hooks;
   const [isUrlBased, setIsUrlBased] = useState(false);
   const [fieldsIds, setFieldsId] = useState([0]);
@@ -33,6 +33,8 @@ const NewProfileForm = () => {
     control,
     name: 'formFields',
   });
+
+  console.log({ closeModal });
 
   const onSubmit = (data) => {
     profiles.add(data);
