@@ -1,11 +1,14 @@
-import React from 'react';
-import Button from '../Button';
+import React from "react";
+import Button from "../Button";
 
-import './profile-list.scss';
+import "./profile-list.scss";
 
-import { BiDownload, BiPencil, BiTrash } from 'react-icons/bi';
+import { BiPencil, BiTrash } from "react-icons/bi";
+import { useProfileList } from "./hooks";
 
-const ProfileList = ({ profiles }) => {
+const ProfileList = ({ profiles, setProfileList }) => {
+  const { onDelete } = useProfileList(setProfileList);
+
   return (
     <ul className="profile-list">
       {profiles.map(({ profileName, description }) => (
@@ -15,15 +18,11 @@ const ProfileList = ({ profiles }) => {
 
             <div className="profile-list__buttons-shelf">
               <Button>
-                <BiDownload />
-              </Button>
-
-              <Button>
                 <BiPencil />
               </Button>
 
               <Button>
-                <BiTrash />
+                <BiTrash onClick={() => onDelete(profileName)} />
               </Button>
             </div>
           </div>
@@ -31,7 +30,7 @@ const ProfileList = ({ profiles }) => {
           <div className="profile-list__second-row">
             <p className="profile-list__description">
               <strong>description: </strong>
-              {description ? description : '--'}
+              {description ? description : "--"}
             </p>
           </div>
         </li>

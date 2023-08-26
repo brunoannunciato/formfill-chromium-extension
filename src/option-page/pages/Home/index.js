@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import Button from '../../components/Button';
-import Modal from '../../components/Modal';
-import ProfileList from '../../components/ProfileList';
+import React, { useEffect, useState } from "react";
+import Button from "../../components/Button";
+import Modal from "../../components/Modal";
+import ProfileList from "../../components/ProfileList";
 
-import { useCloseModal, useOpenModal } from './hooks';
-import profiles from '../../utils/profiles';
+import { useCloseModal, useOpenModal } from "./hooks";
+import profiles from "../../utils/profiles";
 
-import './home.scss';
-import NewProfileForm from '../../components/NewProfileForm';
+import "./home.scss";
+import NewProfileForm from "../../components/NewProfileForm";
 
 const Home = () => {
   const [isCreatingNewProfile, setIsCreatingNewProfile] = useState(false);
@@ -29,14 +29,17 @@ const Home = () => {
             <h2 className="profile-list__title">Profiles:</h2>
 
             <Button onClick={() => useOpenModal(setIsCreatingNewProfile)}>
-              {' '}
-              New profile{' '}
+              {" "}
+              New profile{" "}
             </Button>
           </div>
 
           <div className="profile-list__body">
             {profileList?.length ? (
-              <ProfileList profiles={profileList} />
+              <ProfileList
+                setProfileList={setProfileList}
+                profiles={profileList}
+              />
             ) : (
               `There is no profile created yet. To create your first profile, click the button above.`
             )}
