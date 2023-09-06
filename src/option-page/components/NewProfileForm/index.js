@@ -1,52 +1,29 @@
-import React, { useState } from 'react';
-import { useForm, useFieldArray } from 'react-hook-form';
+import React from 'react';
 
 import InputCheckbox from '../Form/InputCheckbox';
 import InputText from '../Form/InputText';
 import InputTextArea from '../Form/InputTextArea';
 import Button from '../Button';
 import ErrorAlert from '../Form/ErrorAlert';
-import profiles from '../../utils/profiles';
 
-import hooks from './hooks';
+import { useNewProfileForm } from './hooks';
 
 import './new-profile-form.scss';
 import NewField from './components/NewField';
 
-const NewProfileForm = ({ onSubmit: closeModal, profileToEdit }) => {
-  const { useAddNewField, deleteField } = hooks;
-  const [isUrlBased, setIsUrlBased] = useState(false);
-  const [fieldsIds, setFieldsId] = useState([0]);
-
+const NewProfileForm = (props) => {
   const {
+    addNewField,
+    deleteField,
+    isUrlBased,
+    fieldsIds,
+    setFieldsId,
+    toggleUrlBased,
+    onSubmit,
     register,
     handleSubmit,
-    control,
-    formState: { errors },
-  } = useForm({
-    defaultValues: {
-      formFields: [{ selectorType: 'name', separator: ',' }],
-    },
-  });
-
-  useFieldArray({
-    control,
-    name: 'formFields',
-  });
-
-  const onSubmit = (data) => {
-    profiles.add(data).then(() => {
-      closeModal();
-    });
-  };
-
-  const toggleUrlBased = (event) => {
-    const element = event.target;
-
-    setIsUrlBased(element.checked);
-  };
-
-  console.log({ profileToEdit });
+    errors,
+  } = useNewProfileForm(props);
 
   return (
     <form className="new-profile-form" onSubmit={handleSubmit(onSubmit)}>
@@ -77,7 +54,7 @@ const NewProfileForm = ({ onSubmit: closeModal, profileToEdit }) => {
           <Button
             onClick={(event) => {
               event.preventDefault();
-              useAddNewField(fieldsIds, setFieldsId);
+              addNewField(fieldsIds, setFieldsId);
             }}
           >
             add new field
