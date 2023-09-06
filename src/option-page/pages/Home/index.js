@@ -1,25 +1,22 @@
-import React, { useEffect, useState } from "react";
-import Button from "../../components/Button";
-import Modal from "../../components/Modal";
-import ProfileList from "../../components/ProfileList";
+import React from 'react';
+import Button from '../../components/Button';
+import Modal from '../../components/Modal';
+import ProfileList from '../../components/ProfileList';
 
-import { useCloseModal, useOpenModal } from "./hooks";
-import profiles from "../../utils/profiles";
+import { useHome } from './hooks';
 
-import "./home.scss";
-import NewProfileForm from "../../components/NewProfileForm";
+import './home.scss';
+import NewProfileForm from '../../components/NewProfileForm';
 
 const Home = () => {
-  const [isCreatingNewProfile, setIsCreatingNewProfile] = useState(false);
-  const [profileList, setProfileList] = useState([]);
-
-  useEffect(() => {
-    if (isCreatingNewProfile === false) {
-      profiles.getAll().then((data) => {
-        setProfileList(data);
-      });
-    }
-  }, [isCreatingNewProfile]);
+  const {
+    profileList,
+    toggleModal,
+    isModalOpen,
+    setProfileList,
+    setProfileToEdit,
+    profileToEdit,
+  } = useHome();
 
   return (
     <main className="home">
@@ -28,16 +25,14 @@ const Home = () => {
           <div className="profile-list__header">
             <h2 className="profile-list__title">Profiles:</h2>
 
-            <Button onClick={() => useOpenModal(setIsCreatingNewProfile)}>
-              {" "}
-              New profile{" "}
-            </Button>
+            <Button onClick={toggleModal}> New profile </Button>
           </div>
 
           <div className="profile-list__body">
             {profileList?.length ? (
               <ProfileList
                 setProfileList={setProfileList}
+                setProfileToEdit={setProfileToEdit}
                 profiles={profileList}
               />
             ) : (
@@ -47,15 +42,8 @@ const Home = () => {
         </div>
       </div>
 
-      <Modal
-        isVisible={isCreatingNewProfile}
-        onCloseModal={() => useCloseModal(setIsCreatingNewProfile)}
-      >
-        <NewProfileForm
-          onSubmit={() => {
-            useCloseModal(setIsCreatingNewProfile);
-          }}
-        />
+      <Modal isVisible={isModalOpen} onCloseModal={toggleModal}>
+        <NewProfileForm onSubmit={toggleModal} profileToEdit={profileToEdit} />
       </Modal>
     </main>
   );

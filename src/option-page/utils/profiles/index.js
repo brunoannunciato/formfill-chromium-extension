@@ -1,11 +1,17 @@
 const getAll = () => {
   const profileList = new Promise((resolve) => {
-    chrome.storage.sync.get(["profiles"], (response) => {
+    chrome.storage.sync.get(['profiles'], (response) => {
       resolve(response.profiles);
     });
   });
 
   return profileList;
+};
+
+const get = (name) => {
+  getAll().then((profiles) => {
+    console.log({ profiles });
+  });
 };
 
 const add = (profile) => {
@@ -14,11 +20,11 @@ const add = (profile) => {
       const nameInvalid = storageProfiles.filter(
         (storageProfile) =>
           storageProfile.profileName.toLowerCase() ===
-          profile.profileName.toLowerCase(),
+          profile.profileName.toLowerCase()
       ).length;
 
       if (nameInvalid) {
-        alert("This name is already in use");
+        alert('This name is already in use');
         reject(false);
         return;
       }
@@ -44,5 +50,6 @@ const remove = (profileName) => {
 export default {
   add,
   getAll,
+  get,
   remove,
 };

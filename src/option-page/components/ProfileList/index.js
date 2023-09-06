@@ -17,7 +17,7 @@ const ProfileList = ({ profiles, setProfileList, setProfileToEdit }) => {
             <p className="profile-list__name">{profileName}</p>
 
             <div className="profile-list__buttons-shelf">
-              <Button onClick={setProfileToEdit(profileName)}>
+              <Button onClick={() => setProfileToEdit(profileName)}>
                 <BiPencil />
               </Button>
 

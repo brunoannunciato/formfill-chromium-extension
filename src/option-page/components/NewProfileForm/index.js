@@ -13,7 +13,7 @@ import hooks from './hooks';
 import './new-profile-form.scss';
 import NewField from './components/NewField';
 
-const NewProfileForm = ({ onSubmit: closeModal }) => {
+const NewProfileForm = ({ onSubmit: closeModal, profileToEdit }) => {
   const { useAddNewField, deleteField } = hooks;
   const [isUrlBased, setIsUrlBased] = useState(false);
   const [fieldsIds, setFieldsId] = useState([0]);
@@ -45,6 +45,8 @@ const NewProfileForm = ({ onSubmit: closeModal }) => {
 
     setIsUrlBased(element.checked);
   };
+
+  console.log({ profileToEdit });
 
   return (
     <form className="new-profile-form" onSubmit={handleSubmit(onSubmit)}>
