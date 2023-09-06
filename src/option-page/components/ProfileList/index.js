@@ -1,12 +1,12 @@
-import React from "react";
-import Button from "../Button";
+import React from 'react';
+import Button from '../Button';
 
-import "./profile-list.scss";
+import './profile-list.scss';
 
-import { BiPencil, BiTrash } from "react-icons/bi";
-import { useProfileList } from "./hooks";
+import { BiPencil, BiTrash } from 'react-icons/bi';
+import { useProfileList } from './hooks';
 
-const ProfileList = ({ profiles, setProfileList }) => {
+const ProfileList = ({ profiles, setProfileList, setProfileToEdit }) => {
   const { onDelete } = useProfileList(setProfileList);
 
   return (
@@ -17,7 +17,7 @@ const ProfileList = ({ profiles, setProfileList }) => {
             <p className="profile-list__name">{profileName}</p>
 
             <div className="profile-list__buttons-shelf">
-              <Button>
+              <Button onClick={setProfileToEdit(profileName)}>
                 <BiPencil />
               </Button>
 
@@ -30,7 +30,7 @@ const ProfileList = ({ profiles, setProfileList }) => {
           <div className="profile-list__second-row">
             <p className="profile-list__description">
               <strong>description: </strong>
-              {description ? description : "--"}
+              {description ? description : '--'}
             </p>
           </div>
         </li>
