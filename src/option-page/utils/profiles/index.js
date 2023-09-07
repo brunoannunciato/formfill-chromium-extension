@@ -49,9 +49,24 @@ const remove = (profileName) => {
   });
 };
 
+const update = (data) => {
+  return new Promise((resolve) => {
+    getAll().then((profiles) => {
+      const newProfiles = profiles.filter((profile) => {
+        return profile.profileName !== data.profileName;
+      });
+
+      chrome.storage.sync.set({ profiles: [data, ...newProfiles] });
+
+      resolve();
+    });
+  });
+};
+
 export default {
   add,
   getAll,
   get,
   remove,
+  update,
 };

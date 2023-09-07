@@ -8,7 +8,6 @@ const InputTextArea = React.forwardRef(
       <div className="textarea-wrapper">
         <textarea
           className="textarea-wrapper__input-textarea"
-          onInput={(event) => checkIfIsFilled(event)}
           ref={ref}
           {...props}
         />

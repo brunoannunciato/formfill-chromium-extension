@@ -61,6 +61,12 @@ export const useNewProfileForm = ({ onSubmit: closeModal, profileToEdit }) => {
   });
 
   const onSubmit = (data) => {
+    if (profileToEdit) {
+      return profiles.update(data).then(() => {
+        closeModal();
+      });
+    }
+
     profiles.add(data).then(() => {
       closeModal();
     });
@@ -83,5 +89,6 @@ export const useNewProfileForm = ({ onSubmit: closeModal, profileToEdit }) => {
     register,
     handleSubmit,
     errors,
+    isEditting: !!profileToEdit,
   };
 };
