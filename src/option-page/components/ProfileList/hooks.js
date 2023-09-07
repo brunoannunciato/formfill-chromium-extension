@@ -1,6 +1,10 @@
-import profiles from "../../utils/profiles";
+import profiles from '../../utils/profiles';
 
 export const useProfileList = (setProfileList) => {
+  const handleActivedProfile = (profileName) => {
+    profiles.setActived(profileName).then((data) => setProfileList(data));
+  };
+
   const onDelete = (profile) => {
     profiles.remove(profile);
   };
@@ -13,5 +17,6 @@ export const useProfileList = (setProfileList) => {
 
   return {
     onDelete,
+    handleActivedProfile,
   };
 };

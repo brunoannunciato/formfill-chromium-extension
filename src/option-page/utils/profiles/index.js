@@ -63,10 +63,28 @@ const update = (profileToEdit, data) => {
   });
 };
 
+const setActived = (profileName) => {
+  return new Promise((resolve) => {
+    getAll().then((data) => {
+      const newProfiles = data.map((profile) => {
+        return {
+          ...profile,
+          actived: profile.profileName === profileName,
+        };
+      });
+
+      chrome.storage.sync.set({ profiles: newProfiles });
+
+      resolve(newProfiles);
+    });
+  });
+};
+
 export default {
   add,
   getAll,
   get,
   remove,
   update,
+  setActived,
 };

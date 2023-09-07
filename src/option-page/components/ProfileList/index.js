@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Button from '../Button';
+import Switch from 'react-switch';
 
 import './profile-list.scss';
 
@@ -7,11 +8,11 @@ import { BiPencil, BiTrash } from 'react-icons/bi';
 import { useProfileList } from './hooks';
 
 const ProfileList = ({ profiles, setProfileList, setProfileToEdit }) => {
-  const { onDelete } = useProfileList(setProfileList);
+  const { onDelete, handleActivedProfile } = useProfileList(setProfileList);
 
   return (
     <ul className="profile-list">
-      {profiles.map(({ profileName, description }) => (
+      {profiles.map(({ profileName, description, actived }) => (
         <li className="profile-list__item" key={profileName}>
           <div className="profile-list__first-row">
             <p className="profile-list__name">{profileName}</p>
@@ -20,7 +21,6 @@ const ProfileList = ({ profiles, setProfileList, setProfileToEdit }) => {
               <Button onClick={() => setProfileToEdit(profileName)}>
                 <BiPencil />
               </Button>
-
               <Button>
                 <BiTrash onClick={() => onDelete(profileName)} />
               </Button>
@@ -32,6 +32,14 @@ const ProfileList = ({ profiles, setProfileList, setProfileToEdit }) => {
               <strong>description: </strong>
               {description ? description : '--'}
             </p>
+            <div className="profile-list__actived-shelf">
+              <p className="profile-list__actived-label">Actived profile: </p>
+
+              <Switch
+                onChange={() => handleActivedProfile(profileName)}
+                checked={actived}
+              />
+            </div>
           </div>
         </li>
       ))}
