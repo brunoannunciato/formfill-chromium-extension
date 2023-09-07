@@ -49,11 +49,11 @@ const remove = (profileName) => {
   });
 };
 
-const update = (data) => {
+const update = (profileToEdit, data) => {
   return new Promise((resolve) => {
     getAll().then((profiles) => {
       const newProfiles = profiles.filter((profile) => {
-        return profile.profileName !== data.profileName;
+        return profile.profileName !== profileToEdit;
       });
 
       chrome.storage.sync.set({ profiles: [data, ...newProfiles] });

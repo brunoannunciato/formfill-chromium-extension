@@ -23,7 +23,6 @@ const NewProfileForm = (props) => {
     register,
     handleSubmit,
     errors,
-    isEditting,
   } = useNewProfileForm(props);
 
   return (
@@ -31,7 +30,6 @@ const NewProfileForm = (props) => {
       <h2 className="new-profile-form__title">Profile info</h2>
       <InputText
         label="profile name"
-        disabled={isEditting}
         {...register('profileName', { required: 'Profile name is required' })}
       >
         <ErrorAlert errors={errors} name="profileName" />
