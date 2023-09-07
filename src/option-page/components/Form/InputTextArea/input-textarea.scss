@@ -22,16 +22,12 @@
     box-sizing: border-box;
     width: 100%;
     resize: none;
+    border: 1px solid var(--primary-color);
 
-    &--filled,
-    &:focus {
-      border: 1px solid var(--primary-color);
-
-      & + .textarea-wrapper__label {
-        font-size: 0.65rem;
-        top: -2px;
-        color: var(--primary-color);
-      }
+    &+.textarea-wrapper__label {
+      font-size: 0.65rem;
+      top: -2px;
+      color: var(--primary-color);
     }
   }
 }

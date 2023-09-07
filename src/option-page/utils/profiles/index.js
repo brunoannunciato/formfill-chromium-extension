@@ -9,8 +9,10 @@ const getAll = () => {
 };
 
 const get = (name) => {
-  getAll().then((profiles) => {
-    console.log({ profiles });
+  return new Promise((resolve) => {
+    getAll().then((profiles) => {
+      resolve(profiles.find((profile) => profile.profileName === name));
+    });
   });
 };
 

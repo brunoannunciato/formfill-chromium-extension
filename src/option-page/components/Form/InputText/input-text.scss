@@ -22,16 +22,13 @@
     border-radius: 4px;
     box-sizing: border-box;
     width: 100%;
+    border: 1px solid var(--primary-color);
 
-    &--filled,
-    &:focus {
-      border: 1px solid var(--primary-color);
-
-      & + .input-wrapper__label {
-        font-size: 0.65rem;
-        top: -2px;
-        color: var(--primary-color);
-      }
+    &+.input-wrapper__label {
+      font-size: 0.65rem;
+      top: -2px;
+      color: var(--primary-color);
     }
+
   }
 }

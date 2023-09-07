@@ -7,8 +7,11 @@ export const useHome = () => {
   const [profileToEdit, setProfileToEdit] = useState(null);
 
   const toggleModal = (showModal) => {
-    setIsModalOpen((state) =>
-      typeof showModal === 'boolean' ? showModal : !state
+    setIsModalOpen((state) => {
+      if (state) setProfileToEdit(null)
+      return typeof showModal === 'boolean' ? showModal : !state
+    }
+    
     );
   };
 

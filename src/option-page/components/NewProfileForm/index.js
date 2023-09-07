@@ -39,6 +39,7 @@ const NewProfileForm = (props) => {
         name="by-url"
         label="Automatically activate by URL"
         onChange={toggleUrlBased}
+        checked={isUrlBased}
       />
       {isUrlBased ? (
         <InputTextArea
@@ -60,7 +61,6 @@ const NewProfileForm = (props) => {
             add new field
           </Button>
         </div>
-
         <div className="new-profile-form__fields-wrapper">
           {fieldsIds.map((fieldId) => {
             return (

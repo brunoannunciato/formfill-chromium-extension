@@ -1,10 +1,47 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useForm, useFieldArray } from 'react-hook-form';
 import profiles from '../../utils/profiles';
 
 export const useNewProfileForm = ({ onSubmit: closeModal, profileToEdit }) => {
   const [isUrlBased, setIsUrlBased] = useState(false);
   const [fieldsIds, setFieldsId] = useState([0]);
+
+  const {
+    register,
+    handleSubmit,
+    control,
+    formState: { errors },
+    setValue,
+  } = useForm({
+    defaultValues: {
+      formFields: [{ selectorType: 'name', separator: ',' }],
+    },
+  });
+
+  useEffect(() => {
+    profiles.get(profileToEdit).then((profile) => {
+      setValue('profileName', profile.profileName);
+      setValue('description', profile.description);
+
+      setFieldsId(
+        Array.apply(null, { length: profile.formFields.length }).map(
+          Number.call,
+          Number
+        )
+      );
+
+      if (profile.urls) {
+        setIsUrlBased(true);
+        setValue('urls', profile.urls);
+      }
+      profile.formFields.map((data, index) => {
+        setValue(`formFields.${index}.name`, data.name);
+        setValue(`formFields.${index}.selectorType`, data.selectorType);
+        setValue(`formFields.${index}.values`, data.values);
+        setValue(`formFields.${index}.separator`, data.separator);
+      });
+    });
+  }, []);
 
   const addNewField = (fieldsIds, setFieldsId) => {
     const lastId = fieldsIds[fieldsIds.length - 1];
@@ -17,17 +54,6 @@ export const useNewProfileForm = ({ onSubmit: closeModal, profileToEdit }) => {
 
     setFieldsId(newFieldsArr);
   };
-
-  const {
-    register,
-    handleSubmit,
-    control,
-    formState: { errors },
-  } = useForm({
-    defaultValues: {
-      formFields: [{ selectorType: 'name', separator: ',' }],
-    },
-  });
 
   useFieldArray({
     control,
