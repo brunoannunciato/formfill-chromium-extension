@@ -19,6 +19,8 @@ export const useNewProfileForm = ({ onSubmit: closeModal, profileToEdit }) => {
   });
 
   useEffect(() => {
+    if (!profileToEdit) return;
+
     profiles.get(profileToEdit).then((profile) => {
       setValue('profileName', profile.profileName);
       setValue('description', profile.description);
