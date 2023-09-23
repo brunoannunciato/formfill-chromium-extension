@@ -6,13 +6,11 @@ export const useHome = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [profileToEdit, setProfileToEdit] = useState(null);
 
-  const toggleModal = (showModal) => {
+  const toggleModal = (showModal?: boolean) => {
     setIsModalOpen((state) => {
-      if (state) setProfileToEdit(null)
-      return typeof showModal === 'boolean' ? showModal : !state
-    }
-    
-    );
+      if (state) setProfileToEdit(null);
+      return typeof showModal === 'boolean' ? showModal : !state;
+    });
   };
 
   useEffect(() => {

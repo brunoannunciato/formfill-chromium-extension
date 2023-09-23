@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
+
+import { InputTextAreaType } from './types';
 
 import './input-textarea.scss';
 
-const InputTextArea = React.forwardRef(
+const InputTextArea = React.forwardRef<HTMLTextAreaElement, InputTextAreaType>(
   ({ label, helperText, ...props }, ref) => {
     return (
       <div className="textarea-wrapper">

@@ -1,13 +1,18 @@
 import React, { useState } from 'react';
 import Button from '../Button';
 import Switch from 'react-switch';
+import { ProfileListProps } from './types';
 
 import './profile-list.scss';
 
 import { BiPencil, BiTrash } from 'react-icons/bi';
 import { useProfileList } from './hooks';
 
-const ProfileList = ({ profiles, setProfileList, setProfileToEdit }) => {
+const ProfileList = ({
+  profiles,
+  setProfileList,
+  setProfileToEdit,
+}: ProfileListProps) => {
   const { onDelete, handleActivedProfile } = useProfileList(setProfileList);
 
   return (

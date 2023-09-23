@@ -25,7 +25,7 @@ const Home = () => {
           <div className="profile-list__header">
             <h2 className="profile-list__title">Profiles:</h2>
 
-            <Button onClick={toggleModal}> New profile </Button>
+            <Button onClick={() => toggleModal()}> New profile </Button>
           </div>
 
           <div className="profile-list__body">
@@ -43,7 +43,10 @@ const Home = () => {
       </div>
 
       <Modal isVisible={isModalOpen} onCloseModal={toggleModal}>
-        <NewProfileForm onSubmit={toggleModal} profileToEdit={profileToEdit} />
+        <NewProfileForm
+          onSubmit={() => toggleModal()}
+          profileToEdit={profileToEdit}
+        />
       </Modal>
     </main>
   );

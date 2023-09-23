@@ -7,11 +7,12 @@ import Button from '../Button';
 import ErrorAlert from '../Form/ErrorAlert';
 
 import { useNewProfileForm } from './hooks';
+import { NewProfileFormProps } from './types';
 
 import './new-profile-form.scss';
 import NewField from './components/NewField';
 
-const NewProfileForm = (props) => {
+const NewProfileForm = (props: NewProfileFormProps) => {
   const {
     addNewField,
     deleteField,
@@ -38,7 +39,7 @@ const NewProfileForm = (props) => {
       <InputCheckbox
         name="by-url"
         label="Automatically activate by URL"
-        onChange={toggleUrlBased}
+        onChange={() => toggleUrlBased()}
         checked={isUrlBased}
       />
       {isUrlBased ? (

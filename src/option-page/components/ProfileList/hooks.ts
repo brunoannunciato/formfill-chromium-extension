@@ -1,11 +1,13 @@
 import profiles from '../../utils/profiles';
 
-export const useProfileList = (setProfileList) => {
-  const handleActivedProfile = (profileName) => {
+import { SetProfileListType } from './types';
+
+export const useProfileList = (setProfileList: SetProfileListType) => {
+  const handleActivedProfile = (profileName: string) => {
     profiles.setActived(profileName).then((data) => setProfileList(data));
   };
 
-  const onDelete = (profile) => {
+  const onDelete = (profile: string) => {
     profiles.remove(profile);
   };
 

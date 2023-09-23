@@ -2,7 +2,12 @@ import { useEffect, useState } from 'react';
 import { useForm, useFieldArray } from 'react-hook-form';
 import profiles from '../../utils/profiles';
 
-export const useNewProfileForm = ({ onSubmit: closeModal, profileToEdit }) => {
+import { FormFieldType, IFormValues, useNewProfileFormTypes } from './types';
+
+export const useNewProfileForm = ({
+  onSubmit: closeModal,
+  profileToEdit,
+}: useNewProfileFormTypes) => {
   const [isUrlBased, setIsUrlBased] = useState(false);
   const [fieldsIds, setFieldsId] = useState([0]);
 
@@ -12,7 +17,7 @@ export const useNewProfileForm = ({ onSubmit: closeModal, profileToEdit }) => {
     control,
     formState: { errors },
     setValue,
-  } = useForm({
+  } = useForm<IFormValues>({
     defaultValues: {
       formFields: [{ selectorType: 'name', separator: ',' }],
     },
@@ -36,7 +41,7 @@ export const useNewProfileForm = ({ onSubmit: closeModal, profileToEdit }) => {
         setIsUrlBased(true);
         setValue('urls', profile.urls);
       }
-      profile.formFields.map((data, index) => {
+      profile.formFields.map((data: FormFieldType, index: number) => {
         setValue(`formFields.${index}.name`, data.name);
         setValue(`formFields.${index}.selectorType`, data.selectorType);
         setValue(`formFields.${index}.values`, data.values);
@@ -45,13 +50,17 @@ export const useNewProfileForm = ({ onSubmit: closeModal, profileToEdit }) => {
     });
   }, []);
 
-  const addNewField = (fieldsIds, setFieldsId) => {
+  const addNewField = (fieldsIds: number[], setFieldsId: Function) => {
     const lastId = fieldsIds[fieldsIds.length - 1];
 
     setFieldsId([...fieldsIds, lastId + 1]);
   };
 
-  const deleteField = (fieldsIds, setFieldsId, fieldId) => {
+  const deleteField = (
+    fieldsIds: number[],
+    setFieldsId: Function,
+    fieldId: Number
+  ) => {
     const newFieldsArr = fieldsIds.filter((id) => id !== fieldId);
 
     setFieldsId(newFieldsArr);
@@ -62,7 +71,7 @@ export const useNewProfileForm = ({ onSubmit: closeModal, profileToEdit }) => {
     name: 'formFields',
   });
 
-  const onSubmit = (data) => {
+  const onSubmit = (data: IFormValues) => {
     if (profileToEdit) {
       return profiles.update(profileToEdit, data).then(() => {
         closeModal();
@@ -74,8 +83,8 @@ export const useNewProfileForm = ({ onSubmit: closeModal, profileToEdit }) => {
     });
   };
 
-  const toggleUrlBased = (event) => {
-    const element = event.target;
+  const toggleUrlBased = (event?: Event) => {
+    const element = <HTMLInputElement>event.target;
 
     setIsUrlBased(element.checked);
   };
