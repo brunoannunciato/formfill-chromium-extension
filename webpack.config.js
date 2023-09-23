@@ -5,7 +5,7 @@ const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: {
-    option: './src/option-page/option.js',
+    option: './src/option-page/option.tsx',
     service_worker: './src/background/service-worker.js',
   },
   output: {
@@ -14,6 +14,11 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
+      },
       {
         loader: 'babel-loader',
         test: /\.js$/,
@@ -40,6 +45,9 @@ module.exports = {
         },
       },
     ],
+  },
+  resolve: {
+    extensions: ['.tsx', '.ts', '.js'],
   },
   devServer: {
     static: path.join(__dirname, 'dist'),
