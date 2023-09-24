@@ -3,6 +3,7 @@ import { useForm, useFieldArray } from 'react-hook-form';
 import profiles from '../../utils/profiles';
 
 import { FormFieldType, IFormValues, useNewProfileFormTypes } from './types';
+import { IProfile } from '../../utils/profiles/types';
 
 export const useNewProfileForm = ({
   onSubmit: closeModal,
@@ -26,7 +27,7 @@ export const useNewProfileForm = ({
   useEffect(() => {
     if (!profileToEdit) return;
 
-    profiles.get(profileToEdit).then((profile) => {
+    profiles.get(profileToEdit).then((profile: IProfile) => {
       setValue('profileName', profile.profileName);
       setValue('description', profile.description);
 

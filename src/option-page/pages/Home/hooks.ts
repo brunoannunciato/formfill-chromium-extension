@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import profiles from '../../utils/profiles';
+import { IProfile } from '../../utils/profiles/types';
 
 export const useHome = () => {
   const [profileList, setProfileList] = useState([]);
@@ -15,7 +16,7 @@ export const useHome = () => {
 
   useEffect(() => {
     if (isModalOpen === false) {
-      profiles.getAll().then((data) => {
+      profiles.getAll().then((data: IProfile[]) => {
         setProfileList(data);
       });
     }

@@ -1,10 +1,13 @@
 import profiles from '../../utils/profiles';
+import { IProfile } from '../../utils/profiles/types';
 
 import { SetProfileListType } from './types';
 
 export const useProfileList = (setProfileList: SetProfileListType) => {
   const handleActivedProfile = (profileName: string) => {
-    profiles.setActived(profileName).then((data) => setProfileList(data));
+    profiles
+      .setActived(profileName)
+      .then((data: IProfile[]) => setProfileList(data));
   };
 
   const onDelete = (profile: string) => {
@@ -12,7 +15,7 @@ export const useProfileList = (setProfileList: SetProfileListType) => {
   };
 
   chrome.storage.sync.onChanged.addListener(() => {
-    profiles.getAll().then((profiles) => {
+    profiles.getAll().then((profiles: IProfile[]) => {
       setProfileList(profiles);
     });
   });

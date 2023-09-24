@@ -3,8 +3,15 @@ import InputRadio from '../../../Form/InputRadio';
 import InputText from '../../../Form/InputText';
 import ErrorAlert from '../../../Form/ErrorAlert';
 import './new-field.scss';
+import { NewFieldProps } from './types';
 
-const NewField = ({ onDeleteField, disableDelete, register, errors, id }) => {
+const NewField = ({
+  onDeleteField,
+  disableDelete,
+  register,
+  errors,
+  id,
+}: NewFieldProps) => {
   return (
     <div className="new-field">
       <div className="new-field__column">
@@ -33,11 +40,7 @@ const NewField = ({ onDeleteField, disableDelete, register, errors, id }) => {
         {disableDelete ? (
           <span />
         ) : (
-          <button
-            alt="remove field"
-            className="new-field__delete"
-            onClick={onDeleteField}
-          >
+          <button className="new-field__delete" onClick={() => onDeleteField()}>
             +
           </button>
         )}
